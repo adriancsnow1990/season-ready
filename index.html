@@ -20,34 +20,32 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-height:100vh;font-size:13px;}
-
-/* ── top bar ── */
 .topbar{padding:1.25rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
 .topbar-left h1{font-family:'Instrument Serif',serif;font-size:1.8rem;font-weight:400;line-height:1;margin-bottom:3px;}
 .topbar-left h1 em{font-style:italic;color:var(--muted);}
 .topbar-sub{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-.topbar-stats{display:flex;gap:1.5rem;text-align:right;flex-wrap:wrap;}
+.topbar-stats{display:flex;gap:1.5rem;text-align:right;flex-wrap:wrap;align-items:flex-start;}
 .stat-n{font-size:1.4rem;font-weight:300;line-height:1;}
 .stat-l{font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:1px;}
-
-/* ── nav ── */
+.sync-badge{font-size:10px;padding:2px 8px;border-radius:10px;border:1px solid var(--border);color:var(--muted);display:inline-flex;align-items:center;gap:4px;margin-top:4px;}
+.sync-dot{width:5px;height:5px;border-radius:50%;background:var(--muted);}
+.sync-badge.synced .sync-dot{background:#3a7a5e;}
+.sync-badge.syncing .sync-dot{background:#c8a96e;animation:pulse 1s infinite;}
+.sync-badge.error .sync-dot{background:#8e4a2e;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .nav{display:flex;border-bottom:1px solid var(--border);padding:0 2rem;gap:2px;}
 .nav-btn{padding:.75rem 1.25rem;font-size:12px;letter-spacing:.04em;border:none;background:none;color:var(--muted);cursor:pointer;font-family:'DM Mono',monospace;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;}
 .nav-btn:hover{color:var(--text);}
 .nav-btn.active{color:var(--text);border-bottom-color:var(--text);}
-
-/* ── pages ── */
 .page{display:none;} .page.active{display:flex;}
-
-/* ══ WORKOUT PAGE ══ */
-.sidebar{width:240px;flex-shrink:0;border-right:1px solid var(--border);padding:1.25rem .875rem;display:flex;flex-direction:column;gap:.2rem;min-height:calc(100vh - 110px);}
+.sidebar{width:240px;flex-shrink:0;border-right:1px solid var(--border);padding:1.25rem .875rem;display:flex;flex-direction:column;gap:.2rem;min-height:calc(100vh - 120px);}
 .sb-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.6rem .75rem .3rem;}
 .phase-btn{display:flex;align-items:center;gap:9px;padding:.55rem .75rem;border-radius:6px;border:none;background:transparent;color:var(--muted);cursor:pointer;width:100%;text-align:left;font-family:'DM Mono',monospace;font-size:12px;transition:all .15s;}
 .phase-btn:hover{background:var(--surface);color:var(--text);}
 .phase-btn.active{background:var(--surface2);color:var(--text);}
 .pdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.dot-a{background:var(--phase-a);} .dot-b{background:var(--phase-b);} .dot-c{background:var(--phase-c);} .dot-d{background:var(--phase-d);}
-.pb-label{flex:1;} .pb-pct{font-size:10px;color:var(--muted);}
+.dot-a{background:var(--phase-a);}.dot-b{background:var(--phase-b);}.dot-c{background:var(--phase-c);}.dot-d{background:var(--phase-d);}
+.pb-label{flex:1;}.pb-pct{font-size:10px;color:var(--muted);}
 .sb-div{border:none;border-top:1px solid var(--border);margin:.6rem 0;}
 .qs{padding:.65rem;background:var(--surface);border-radius:8px;}
 .qs-row{display:flex;justify-content:space-between;padding:3px 0;font-size:11px;color:var(--muted);}
@@ -69,7 +67,7 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .pr-row{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;}
 .pr-track{flex:1;height:3px;background:var(--faint);border-radius:2px;}
 .pr-fill{height:3px;border-radius:2px;transition:width .4s;}
-.fill-a{background:var(--phase-a);} .fill-b{background:var(--phase-b);} .fill-c{background:var(--phase-c);} .fill-d{background:var(--phase-d);}
+.fill-a{background:var(--phase-a);}.fill-b{background:var(--phase-b);}.fill-c{background:var(--phase-c);}.fill-d{background:var(--phase-d);}
 .pr-lbl{font-size:10px;color:var(--muted);min-width:55px;text-align:right;}
 .legend{display:flex;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.25rem;}
 .li{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
@@ -82,7 +80,6 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .wk-num{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
 .wk-dates{font-size:11px;color:var(--muted);}
 .cur-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gym);animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .wk-sessions{padding:5px;display:flex;flex-direction:column;gap:2px;}
 .hint{font-size:10px;color:var(--faint);padding:0 7px 5px;}
 .sw{border-radius:5px;overflow:hidden;}
@@ -109,13 +106,11 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .ninput{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:5px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px;padding:6px 8px;resize:vertical;min-height:50px;outline:none;transition:border-color .15s;}
 .ninput:focus{border-color:var(--muted);}
 .ninput::placeholder{color:var(--faint);}
-
-/* ══ HABITS PAGE ══ */
 .habits-wrap{padding:1.5rem 2rem;width:100%;max-width:860px;}
 .htabs{display:flex;gap:6px;margin-bottom:1.5rem;}
 .htab{padding:6px 14px;font-size:12px;font-weight:500;border-radius:6px;border:.5px solid var(--border);background:transparent;cursor:pointer;color:var(--muted);font-family:'DM Mono',monospace;transition:all .15s;}
 .htab.active{background:var(--surface2);color:var(--text);border-color:var(--muted);}
-.hsection{display:none;} .hsection.active{display:block;}
+.hsection{display:none;}.hsection.active{display:block;}
 .month-nav{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;}
 .mnav-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'DM Mono',monospace;font-size:11px;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all .15s;}
 .mnav-btn:hover{border-color:var(--muted);color:var(--text);}
@@ -124,7 +119,7 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .streaks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem;}
 .str-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.875rem;}
 .str-n{font-size:1.7rem;font-weight:300;line-height:1;margin-bottom:3px;}
-.str-l{font-size:11px;} .str-s{font-size:10px;color:var(--faint);margin-top:2px;}
+.str-l{font-size:11px;}.str-s{font-size:10px;color:var(--faint);margin-top:2px;}
 .cal-wrap{margin-bottom:1.75rem;}
 .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:3px;}
 .cal-dow span{text-align:center;font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;padding:3px 0;}
@@ -140,10 +135,9 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .hpill:hover{opacity:.75;}
 .hpill.unticked{opacity:.3;}
 .pdot2{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
-.pill-cr{background:var(--creatine-bg);} .pill-cr .pdot2{background:var(--creatine);}
-.pill-pr{background:var(--protein-bg);} .pill-pr .pdot2{background:var(--protein);}
-.pill-mu{background:var(--multi-bg);}   .pill-mu .pdot2{background:var(--multi);}
-/* drink calendar */
+.pill-cr{background:var(--creatine-bg);}.pill-cr .pdot2{background:var(--creatine);}
+.pill-pr{background:var(--protein-bg);}.pill-pr .pdot2{background:var(--protein);}
+.pill-mu{background:var(--multi-bg);}.pill-mu .pdot2{background:var(--multi);}
 .dcal-day{min-height:88px;}
 .drink-ctrl{display:flex;flex-direction:column;gap:3px;}
 .dc-row{display:flex;align-items:center;gap:4px;}
@@ -165,8 +159,6 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 .wb-v{min-width:32px;text-align:right;color:var(--text);}
 .target-note{font-size:11px;color:var(--muted);padding:8px 11px;background:var(--surface);border-radius:6px;border-left:2px solid var(--faint);margin-bottom:1.25rem;line-height:1.6;}
 .target-note strong{color:var(--text);}
-
-/* ── shared reset btn ── */
 .reset-btn{background:none;border:1px solid var(--border);color:var(--muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all .15s;margin-top:.5rem;}
 .reset-btn:hover{border-color:var(--muted);color:var(--text);}
 </style>
@@ -182,7 +174,14 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
     <div><div class="stat-n" id="hdr-sessions">0</div><div class="stat-l">Sessions done</div></div>
     <div><div class="stat-n" id="hdr-streak">0</div><div class="stat-l">Supp streak</div></div>
     <div><div class="stat-n" id="hdr-drinks">0</div><div class="stat-l">Drinks this week</div></div>
-    <div><div class="stat-n" id="hdr-days">—</div><div class="stat-l">Days to first game</div><input type="date" id="game-date-input" style="margin-top:4px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:monospace;font-size:10px;padding:2px 5px;border-radius:4px;outline:none;width:110px;" onchange="setGameDate(this.value)"></div>
+    <div>
+      <div class="stat-n" id="hdr-days">—</div>
+      <div class="stat-l">Days to first game</div>
+      <input type="date" id="game-date-input" style="margin-top:4px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:monospace;font-size:10px;padding:2px 5px;border-radius:4px;outline:none;width:110px;" onchange="setGameDate(this.value)">
+    </div>
+    <div>
+      <div class="sync-badge" id="sync-badge"><div class="sync-dot"></div><span id="sync-label">connecting</span></div>
+    </div>
   </div>
 </div>
 
@@ -191,7 +190,6 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
   <button class="nav-btn" onclick="showPage('habits')">Habits</button>
 </div>
 
-<!-- ══ WORKOUT PAGE ══ -->
 <div class="page active" id="page-workout">
   <div class="sidebar">
     <div class="sb-label">Phases</div>
@@ -219,15 +217,12 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
   </div>
 </div>
 
-<!-- ══ HABITS PAGE ══ -->
 <div class="page" id="page-habits">
   <div class="habits-wrap">
     <div class="htabs">
       <button class="htab active" onclick="showHtab('supps')">Supplements</button>
       <button class="htab" onclick="showHtab('drinks')">Alcohol</button>
     </div>
-
-    <!-- supplements -->
     <div class="hsection active" id="ht-supps">
       <div class="month-nav">
         <button class="mnav-btn" onclick="changeMonth('s',-1)">← prev</button>
@@ -245,8 +240,6 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
       </div>
       <button class="reset-btn" onclick="resetSupps()">Reset supplement data</button>
     </div>
-
-    <!-- drinks -->
     <div class="hsection" id="ht-drinks">
       <div class="month-nav">
         <button class="mnav-btn" onclick="changeMonth('d',-1)">← prev</button>
@@ -271,9 +264,45 @@ body{font-family:'DM Mono',monospace;background:var(--bg);color:var(--text);min-
 </div>
 
 <script>
+// ══ SUPABASE ══
+const SB_URL='https://qxyyfzbypyguovezvsjl.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4eXlmemJ5cHlndW92ZXp2c2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4ODg4NDQsImV4cCI6MjA5MjQ2NDg0NH0.g0MWvYwvf0v9l9JQ8qTTUEmc4w2Nwba3o0lbY-d7Md8';
+const HEADERS={'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'};
+
+function setSyncStatus(s){
+  const b=document.getElementById('sync-badge');
+  const l=document.getElementById('sync-label');
+  b.className='sync-badge '+s;
+  l.textContent=s==='synced'?'synced':s==='syncing'?'saving...':s==='error'?'offline':'connecting';
+}
+
+let saveTimer={};
+async function dbGet(table){
+  try{
+    const r=await fetch(`${SB_URL}/rest/v1/${table}?id=eq.main&select=data`,{headers:HEADERS});
+    const j=await r.json();
+    return(j&&j[0])?j[0].data:{};
+  }catch(e){return{};}
+}
+async function dbSet(table,data){
+  setSyncStatus('syncing');
+  try{
+    await fetch(`${SB_URL}/rest/v1/${table}`,{
+      method:'POST',
+      headers:{...HEADERS,'Prefer':'resolution=merge-duplicates,return=minimal'},
+      body:JSON.stringify({id:'main',data,updated_at:new Date().toISOString()})
+    });
+    setSyncStatus('synced');
+  }catch(e){setSyncStatus('error');}
+}
+function debounceSave(table,data,delay=800){
+  clearTimeout(saveTimer[table]);
+  saveTimer[table]=setTimeout(()=>dbSet(table,data),delay);
+}
+
 // ══ SHARED ══
-const today = new Date();
-const todayMid = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+const today=new Date();
+const todayMid=new Date(today.getFullYear(),today.getMonth(),today.getDate());
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 function dateKey(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;}
 function isToday(y,m,d){return y===today.getFullYear()&&m===today.getMonth()&&d===today.getDate();}
@@ -281,23 +310,18 @@ function isFuture(y,m,d){return new Date(y,m,d)>todayMid;}
 function dim(y,m){return new Date(y,m+1,0).getDate();}
 function fdow(y,m){let d=new Date(y,m,1).getDay();return d===0?6:d-1;}
 
-// days to first game
 function daysToGame(){
-  const stored=localStorage.getItem('sr_gamedate');
-  if(!stored)return '—';
+  const stored=settings.gamedate;
+  if(!stored)return'—';
   const p=stored.split('-');
   const g=new Date(+p[0],+p[1]-1,+p[2]);
   const diff=Math.ceil((g-todayMid)/(24*3600*1000));
   return diff>0?diff:diff===0?'Today!':'Past';
 }
 function setGameDate(val){
-  localStorage.setItem('sr_gamedate',val);
+  settings.gamedate=val;
+  debounceSave('settings',settings);
   updateHeader();
-}
-function initGameDate(){
-  const stored=localStorage.getItem('sr_gamedate');
-  const inp=document.getElementById('game-date-input');
-  if(stored&&inp)inp.value=stored;
 }
 
 function showPage(p){
@@ -306,7 +330,7 @@ function showPage(p){
   document.getElementById('page-'+p).classList.add('active');
 }
 
-// ══ WORKOUT DATA ══
+// ══ WORKOUT ══
 const EXERCISES={
   p1:{
     mon:['5 min warm-up — hip circles, leg swings, glute bridges','Goblet squat — 3×12 (light-moderate, perfect form)','Romanian deadlift — 3×10 each leg (dumbbell)','Leg press — 3×12','Seated leg curl — 3×12','Single-leg calf raise — 3×12 (slow 3-sec lowering)','10 min golf mobility: hip 90/90, thoracic rotation, lat stretch, pigeon pose'],
@@ -341,24 +365,21 @@ const EXERCISES={
     rest:['Walk. Rest. Nearly there.'],
   },
 };
-
-function getEx(pi,dk,wn){
+function getEx(pi,dk){
   const pKey=['p1','p2','p3','p4'][pi];
   const dm={gym_mon:'mon',gym_wed:'wed',gym_fri:'fri',run:'run',opt:'opt',rest:'rest'};
   return EXERCISES[pKey][dm[dk]]||[];
 }
-
 const PHASES=[
   {id:0,name:'Phase 1 — Base',dates:'May 1 – May 28',badge:'badge-a',fill:'fill-a',focus:"Build habits. Joints adapt before muscles. Don't hurt yourself.",weeks:[{n:1,s:'May 1',e:'May 7'},{n:2,s:'May 8',e:'May 14'},{n:3,s:'May 15',e:'May 21'},{n:4,s:'May 22',e:'May 28'}]},
   {id:1,name:'Phase 2 — Build',dates:'May 29 – Jul 9',badge:'badge-b',fill:'fill-b',focus:'Add load, add run volume. Body composition shifts here.',weeks:[{n:5,s:'May 29',e:'Jun 4'},{n:6,s:'Jun 5',e:'Jun 11'},{n:7,s:'Jun 12',e:'Jun 18'},{n:8,s:'Jun 19',e:'Jun 25'},{n:9,s:'Jun 26',e:'Jul 2'},{n:10,s:'Jul 3',e:'Jul 9'}]},
   {id:2,name:'Phase 3 — Power',dates:'Jul 10 – Aug 20',badge:'badge-c',fill:'fill-c',focus:'Strength becomes explosive. Hockey conditioning. 5k pace work.',weeks:[{n:11,s:'Jul 10',e:'Jul 16'},{n:12,s:'Jul 17',e:'Jul 23'},{n:13,s:'Jul 24',e:'Jul 30'},{n:14,s:'Jul 31',e:'Aug 6'},{n:15,s:'Aug 7',e:'Aug 13'},{n:16,s:'Aug 14',e:'Aug 20'}]},
   {id:3,name:'Phase 4 — Peak',dates:'Aug 21 – Sep 15',badge:'badge-d',fill:'fill-d',focus:"Sharpen, don't add. Sub-25 attempt week 19. Arrive fresh.",weeks:[{n:17,s:'Aug 21',e:'Aug 27'},{n:18,s:'Aug 28',e:'Sep 3'},{n:19,s:'Sep 4',e:'Sep 10'},{n:20,s:'Sep 11',e:'Sep 15'}]},
 ];
-
 function getSessions(pi,wn){
   const rl={5:'8 min on / 2 min off × 3',6:'10 min on / 2 min off × 3',7:'12 min / 2 min × 2 then 8 min',8:'20 min continuous',9:'22 min continuous',10:'25 min continuous — milestone!',11:'28–30 min easy',12:'28–30 min easy',13:'Tempo — 1 km intervals',14:'Tempo — 2×1 km',15:'Tempo — 3×1 km',16:'⚡ 5k time trial — target 26 min',17:'Easy 30 min + strides',18:'20 min + 2×1.5 km tempo',19:'🎯 SUB-25 MIN ATTEMPT',20:'Easy 20 min — done'};
   const fri=pi>=2?(pi===3?'Power & agility':'Hockey conditioning'):'Full body — athletic';
-  const b=[
+  return[
     {day:'Mon',type:'gym',dk:'gym_mon',name:pi===0?'Lower body + hip mobility':pi===1?'Lower body — progressive':pi===2?'Legs + explosiveness':'Lower body — reduced volume'},
     {day:'Tue',type:'run',dk:'run',name:rl[wn]||'Run session'},
     {day:'Wed',type:'gym',dk:'gym_wed',name:pi===0?'Upper body + core':pi===1?'Upper body + rotational':pi===2?'Upper + rotational power':'Upper body — reduced volume'},
@@ -366,12 +387,14 @@ function getSessions(pi,wn){
     {day:'Fri',type:'gym',dk:'gym_fri',name:fri},
     {day:'Wknd',type:'opt',dk:'opt',name:'Optional — golf or active'},
   ];
-  return b;
 }
 
-let wdata=JSON.parse(localStorage.getItem('sr_workout')||'{}');
+let wdata={},sdata={},ddata={},settings={};
 let currentPhase=0;
-function saveW(){localStorage.setItem('sr_workout',JSON.stringify(wdata));}
+
+function saveW(){debounceSave('workout_data',wdata);}
+function saveS(){debounceSave('supp_data',sdata);}
+function saveD(){debounceSave('drink_data',ddata);}
 
 function toggleDone(wk,i){wdata[`w${wk}_s${i}`]=!wdata[`w${wk}_s${i}`];saveW();renderWorkout();updateHeader();}
 function toggleExp(wk,i){wdata[`exp_w${wk}_s${i}`]=!wdata[`exp_w${wk}_s${i}`];saveW();renderWorkout();}
@@ -420,14 +443,13 @@ function renderWorkout(){
   for(const wk of phase.weeks){
     const ss=getSessions(phase.id,wk.n);
     const done=ss.filter((s,i)=>s.type!=='rest'&&wdata[`w${wk.n}_s${i}`]).length;
-    const total=wkTotal(phase.id,wk.n);
     const isCur=wk.n===cw;
-    h+=`<div class="week-card${isCur?' wc-cur':''}"><div class="wk-head"><div class="wk-head-l">${isCur?'<span class="cur-dot"></span>':''}<span class="wk-num">Week ${wk.n}</span><span class="wk-dates">${wk.s} – ${wk.e}</span></div><span style="font-size:11px;color:var(--muted)">${done}/${total}</span></div><div class="wk-sessions"><div class="hint">Tick to mark done · ▸ to see exercises</div>`;
+    h+=`<div class="week-card${isCur?' wc-cur':''}"><div class="wk-head"><div class="wk-head-l">${isCur?'<span class="cur-dot"></span>':''}<span class="wk-num">Week ${wk.n}</span><span class="wk-dates">${wk.s} – ${wk.e}</span></div><span style="font-size:11px;color:var(--muted)">${done}/${wkTotal(phase.id,wk.n)}</span></div><div class="wk-sessions"><div class="hint">Tick to mark done · ▸ to see exercises</div>`;
     ss.forEach((s,i)=>{
       const isDone=!!wdata[`w${wk.n}_s${i}`]&&s.type!=='rest';
       const isExp=!!wdata[`exp_w${wk.n}_s${i}`];
       const note=wdata[`note_w${wk.n}_s${i}`]||'';
-      const exs=getEx(phase.id,s.dk,wk.n);
+      const exs=getEx(phase.id,s.dk);
       h+=`<div class="sw${isDone?' done':''}"><div class="srow" onclick="toggleDone(${wk.n},${i})"><div class="scheck">${isDone?'✓':''}</div><span class="sday">${s.day}</span><span class="styp type-${s.type}">${s.type}</span><span class="sname">${s.name}</span>${exs.length?`<button class="exp-btn" onclick="event.stopPropagation();toggleExp(${wk.n},${i})">${isExp?'▾':'▸'}</button>`:''}</div><div class="ex-panel${isExp?' open':''}"><ul class="ex-list">${exs.map(e=>`<li>${e}</li>`).join('')}</ul><div class="nlabel">Notes</div><textarea class="ninput" placeholder="Weight, pace, how you felt..." oninput="saveNote(${wk.n},${i},this.value)">${note}</textarea></div></div>`;
     });
     h+=`</div></div>`;
@@ -436,12 +458,7 @@ function renderWorkout(){
   document.getElementById('phase-view').innerHTML=h;
 }
 
-// ══ HABITS DATA ══
-let sdata=JSON.parse(localStorage.getItem('sr_supps')||'{}');
-let ddata=JSON.parse(localStorage.getItem('sr_drinks')||'{}');
-function saveS(){localStorage.setItem('sr_supps',JSON.stringify(sdata));}
-function saveD(){localStorage.setItem('sr_drinks',JSON.stringify(ddata));}
-
+// ══ HABITS ══
 let sMonth={y:today.getFullYear(),m:today.getMonth()};
 let dMonth={y:today.getFullYear(),m:today.getMonth()};
 const SUPPS=[{key:'cr',label:'Creatine',cls:'pill-cr'},{key:'mu',label:'Multivit',cls:'pill-mu'},{key:'pr',label:'Protein',cls:'pill-pr'}];
@@ -456,7 +473,6 @@ function showHtab(t){
   document.querySelectorAll('.hsection').forEach(s=>s.classList.remove('active'));
   document.getElementById('ht-'+t).classList.add('active');
 }
-
 function toggleSupp(y,m,d,key){sdata[`${dateKey(y,m,d)}_${key}`]=!sdata[`${dateKey(y,m,d)}_${key}`];saveS();renderSupps();updateHeader();}
 function changeDrinks(y,m,d,delta){const k=dateKey(y,m,d);ddata[k]=Math.max(0,(ddata[k]||0)+delta);saveD();renderDrinks();updateHeader();}
 
@@ -504,23 +520,18 @@ function renderDrinks(){
   const{y,m}=dMonth;
   document.getElementById('mtitle-d').textContent=MONTHS[m]+' '+y;
   const{tot,occ,dry}=getMonthDrinks(y,m);
-  const wk=thisWeekDrinks();
-  document.getElementById('ds-week').textContent=wk;
+  document.getElementById('ds-week').textContent=thisWeekDrinks();
   document.getElementById('ds-month').textContent=tot;
   document.getElementById('ds-occ').textContent=occ;
   document.getElementById('ds-dry').textContent=dry;
-  // week breakdown
-  const days2=dim(y,m),weeks=[];
-  let wkd=[],wks=null;
+  const days2=dim(y,m);let wkd=[],wks=null,weeks=[];
   for(let d=1;d<=days2;d++){const dow=new Date(y,m,d).getDay();const md=dow===0?6:dow-1;if(md===0||d===1){if(wkd.length)weeks.push({s:wks,days:wkd});wkd=[];wks=d;}wkd.push(d);}
   if(wkd.length)weeks.push({s:wks,days:wkd});
   const parsed=weeks.map(w=>({lbl:`${MONTHS[m].slice(0,3)} ${w.s}`,tot:w.days.reduce((a,d)=>a+(ddata[dateKey(y,m,d)]||0),0),occ:w.days.filter(d=>(ddata[dateKey(y,m,d)]||0)>0).length}));
   const maxW=Math.max(...parsed.map(w=>w.tot),1);
   document.getElementById('wb-rows').innerHTML=parsed.map(w=>{const ov=w.occ>2;const bc=w.occ<=2?'#3a7a5e':w.occ<=3?'#8e7a2e':'#8e4a2e';return `<div class="wb-row"><span class="wb-wk">${w.lbl}</span><div class="wb-bw"><div class="wb-b" style="width:${Math.round((w.tot/maxW)*100)}%;background:${bc}"></div></div><span class="wb-v">${w.tot}${ov?' ⚠':''}</span></div>`;}).join('');
-  // calendar
-  const off=fdow(y,m);
   let h='';
-  for(let i=0;i<off;i++)h+='<div class="cal-day empty"></div>';
+  for(let i=0;i<fdow(y,m);i++)h+='<div class="cal-day empty"></div>';
   for(let d=1;d<=days2;d++){
     const fut=isFuture(y,m,d),tod=isToday(y,m,d),n=ddata[dateKey(y,m,d)]||0;
     const bw=Math.min(100,n*20),bc=drinkColor(n);
@@ -529,7 +540,7 @@ function renderDrinks(){
   document.getElementById('drink-cal').innerHTML=h;
 }
 
-function resetSupps(){if(confirm('Reset supplement data?')){sdata={};saveS();renderSupps();updateHeader();}}
+function resetSupps(){if(confirm('Reset supplement data?')){sdata={};saveD();renderSupps();updateHeader();}}
 function resetDrinks(){if(confirm('Reset alcohol data?')){ddata={};saveD();renderDrinks();updateHeader();}}
 
 function updateHeader(){
@@ -538,12 +549,29 @@ function updateHeader(){
   document.getElementById('hdr-days').textContent=daysToGame();
 }
 
-// ── init ──
-renderWorkout();
-renderSupps();
-renderDrinks();
-initGameDate();
-updateHeader();
+// ══ INIT — load all data from Supabase then render ══
+async function init(){
+  setSyncStatus('connecting');
+  try{
+    [wdata,sdata,ddata,settings]=await Promise.all([
+      dbGet('workout_data'),
+      dbGet('supp_data'),
+      dbGet('drink_data'),
+      dbGet('settings'),
+    ]);
+    setSyncStatus('synced');
+  }catch(e){
+    setSyncStatus('error');
+  }
+  const inp=document.getElementById('game-date-input');
+  if(settings.gamedate&&inp)inp.value=settings.gamedate;
+  renderWorkout();
+  renderSupps();
+  renderDrinks();
+  updateHeader();
+}
+
+init();
 </script>
 </body>
 </html>
